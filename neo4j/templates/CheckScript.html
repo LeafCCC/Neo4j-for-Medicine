@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>处方合理性判断</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+        body{background:url(static/img/bg2.jpg) top left;
+        background-size:100%;}
+        .btn{
+            background:gray;
+            color:white;
+            font-size:15px;
+            font-weight:bold;
+            height:40px;
+            border-radius:6px;
+        }
+</style>
+<body>
+<h2 style="background-color:darkgray;">功能二：处方合理性判断</h2>
+<h5>请在此处键入处方信息：</h5>
+<form name="script" method="post">
+    <table class="table table-hover table-striped table-condensed" >
+        <tbody>
+        <tr>
+            <td>病症:</td>
+            <td>{{ scri_form.sympt_name2 }}</td>
+            <td colspan="2">药品数量:{{ scri_form.product_num }} 个</td>
+        </tr>
+        <tr>
+            <td><label>患者信息</label></td>
+            <td><label>年龄段</label>{{ scri_form.people_age }}</td>
+            <td><label>备注1（如有，请输入患者的基础疾病）:</label>{{ scri_form.diseases }}</td>
+            <td><label>备注2（特殊人群说明）</label>{{ scri_form.specific_people }}</td>
+        </tr>
+        <tr>
+            <td>药品1：</td>
+            <td>名称：{{ scri_form.product1_name }}</td>
+            <td>用法：{{ scri_form.usage1 }}（请根据处方选择填写【一日几次】或【每几小时1次】）</td>
+            <td>一日{{ scri_form.frequency1 }}次, 一次{{ scri_form.amount11 }}mg。每{{ scri_form.fre1 }}小时1次， 一次{{ scri_form.amount21 }}mg</td>
+        </tr>
+        <tr>
+            <td>药品2：</td>
+            <td>名称：{{ scri_form.product2_name }}</td>
+            <td>用法：{{ scri_form.usage2 }}（请根据处方选择填写【一日几次】或【每几小时1次】）</td>
+            <td>一日{{ scri_form.frequency2 }}次, 一次{{ scri_form.amount12 }}mg。每{{ scri_form.fre2 }}小时1次， 一次{{ scri_form.amount22 }}mg</td>
+        </tr>
+        <tr>
+            <td>药品3：</td>
+            <td>名称：{{ scri_form.product3_name }}</td>
+            <td>用法：{{ scri_form.usage3 }}（请根据处方选择填写【一日几次】或【每几小时1次】）</td>
+            <td>一日{{ scri_form.frequency3 }}次, 一次{{ scri_form.amount13 }}mg。每{{ scri_form.fre3 }}小时1次， 一次{{ scri_form.amount23 }}mg</td>
+        </tr>
+        </tbody>
+    </table>
+    &nbsp;&nbsp;{{ scri_form.submit2 (class='btn')}}<br>
+</form>
+
+</body>
+</html>

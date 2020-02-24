@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>病症可用药物查询</title>
+</head>
+       <style >
+        body{background:url(static/img/bg3.jpg) top left;
+        background-size:100%;}
+        .btn{
+            background:#2066C5;
+            color:white;
+            font-size:15px;
+            font-weight:bold;
+            height:25px;
+            border-radius:8px;
+        }
+        .font1{
+            font-weight:bold;
+        }
+        .input1{
+            font-weight:bold;
+            border-radius:4px;
+        }
+       </style>
+<body>
+
+<h2 >功能一：查询可用药品</h2>
+<hr>
+<form method="post">
+    &nbsp;{{ symp_form.sympt_name.label(class='font1')}}{{ symp_form.sympt_name(class='input1')}}<br>
+    <hr>
+    {{ symp_form.submit1 (class='btn')}}<br>
+</form>
+
+</body>
+</html>

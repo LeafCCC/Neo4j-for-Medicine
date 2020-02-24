@@ -1,0 +1,77 @@
+----------------------以下为实体导入--------------------
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/drug.csv" AS csvLine
+CREATE (a:drug { name:csvLine.drug_name});
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/product.csv" AS csvLine
+CREATE (a:product {  product_id:csvLine.product_id,name:csvLine.product_name,  size:csvLine.size});
+
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/symptom.csv" AS csvLine
+CREATE (a:symptom{ name:csvLine.symptom_name});
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/people.csv" AS csvLine
+CREATE (a:people{ name:csvLine.people_name});
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/use.csv" AS csvLine
+CREATE (a:use {  use_id:csvLine.use_id,useage:csvLine.useage, people:csvLine.people, frequency:csvLine.frequency, consumption:csvLine.consumption, notes:csvLine.notes});
+
+
+
+----------------------以下为关系------------------------------
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/canuse.csv" AS csvLine
+MATCH (a:symptom {name:csvLine.symptom_name}),(b:drug {name:csvLine.drug_name})
+CREATE (a)-[r:canuse{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/haveproduct.csv" AS csvLine
+MATCH (a:drug {name:csvLine.drug_name}),(b:product {product_id:csvLine.product_id})
+CREATE (a)-[r:haveproduct{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/productfor.csv" AS csvLine
+MATCH (a:product {product_id:csvLine.product_id}),(b:drug {name:csvLine.drug_name})
+CREATE (a)-[r:productfor{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/haveuse.csv" AS csvLine
+MATCH (a:product {product_id:csvLine.product_id}),(b:use {use_id:csvLine.use_id})
+CREATE (a)-[r:haveuse{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/caution_drug.csv" AS csvLine
+MATCH (a:drug{name:csvLine.drug1_name}),(b:drug {name:csvLine.drug2_name})
+CREATE (a)-[r:caution_drug{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/prohibition_drug.csv" AS csvLine
+MATCH (a:drug{name:csvLine.drug1_name}),(b:drug {name:csvLine.drug2_name})
+CREATE (a)-[r:prohibition_drug{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/caution_people.csv" AS csvLine
+MATCH (a:drug{name:csvLine.drug_name}),(b:people {name:csvLine.people_name})
+CREATE (a)-[r:caution_people{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/prohibition_people.csv" AS csvLine
+MATCH (a:drug{name:csvLine.drug_name}),(b:people {name:csvLine.people_name})
+CREATE (a)-[r:prohibition_people{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/caution_symptom.csv" AS csvLine
+MATCH (a:drug{name:csvLine.drug_name}),(b:symptom {name:csvLine.symptom_name})
+CREATE (a)-[r:caution_symptom{type:csvLine.type}]->(b);
+
+USING PERIODIC COMMIT 1000
+LOAD CSV WITH HEADERS FROM "file:/prohibition_symptom.csv" AS csvLine
+MATCH (a:drug{name:csvLine.drug_name}),(b:symptom {name:csvLine.symptom_name})
+CREATE (a)-[r:prohibiton_symptom{type:csvLine.type}]->(b);
+
+
