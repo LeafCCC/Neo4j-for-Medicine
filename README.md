@@ -9,4 +9,14 @@
 
 --------
 ## 效果展示
-![图片1.png](https://i.loli.net/2020/11/17/H4clLOmzPXpSfrB.png)
+
+### 1、主页
+![主页.png](https://i.loli.net/2020/11/17/H4clLOmzPXpSfrB.png)
+
+### 2、功能一
+![功能一.png](https://i.loli.net/2020/11/17/KXxNc6UZj8TMFdl.png)
+![功能一效果.png](https://i.loli.net/2020/11/17/QBAOKhGgezvn1uN.png)
+
+### 3、功能二
+![功能二.png](https://i.loli.net/2020/11/17/lvAms6hWZiRTYFq.png)
+![功能二效果.png](https://i.loli.net/2020/11/17/yBq873ko15cQanv.png)
